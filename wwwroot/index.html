@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking Pad Stats Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Walking Pad Stats Viewer</h1>
+
+        <div class="main-grid">
+            <div class="card video-container">
+                <h2>Camera Feed</h2>
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+
+                <div class="controls">
+                    <button id="startBtn" class="btn-primary">Start Camera</button>
+                    <button id="toggleAutoBtn" class="btn-secondary" disabled>Start Auto-Capture</button>
+                    <button id="stopBtn" class="btn-danger" disabled>Stop Camera</button>
+                    <input type="file" id="uploadInput" style="display: none;">
+                    <button id="uploadBtn" class="btn-secondary">Upload Image</button>
+                </div>
+
+                <div id="status" class="status info">
+                    Click "Start Camera" to begin
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Last Captured Frame</h2>
+                <div id="capturedPlaceholder" class="captured-placeholder">
+                    No frame captured yet
+                </div>
+                <img id="lastCaptured" class="captured-image" style="display: none;">
+            </div>
+
+            <div class="card history-section">
+                <h2>Capture History</h2>
+                <button id="clearHistoryBtn" class="btn-danger" style="float: right; margin-bottom: 15px;">Clear History</button>
+                <div style="clear: both;"></div>
+                <div class="stats-grid" style="margin-bottom: 15px;">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalCaptures">0</div>
+                        <div class="stat-label">Total Captures</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="successRate">0%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table id="historyTable" style="width: 100%; border-collapse: collapse; display: none;">
+                        <thead>
+                            <tr style="background: #f5f5f5; border-bottom: 2px solid #ddd;">
+                                <th style="padding: 10px; text-align: left; font-weight: 500;">Timestamp</th>
+                                <th style="padding: 10px; text-align: left; font-weight: 500;">Time</th>
+                                <th style="padding: 10px; text-align: left; font-weight: 500;">Calories</th>
+                                <th style="padding: 10px; text-align: left; font-weight: 500;">Speed</th>
+                                <th style="padding: 10px; text-align: left; font-weight: 500;">Steps</th>
+                                <th style="padding: 10px; text-align: left; font-weight: 500;">Distance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                        </tbody>
+                    </table>
+                    <p id="noHistoryMessage" style="text-align: center; color: #666; padding: 20px;">No captures yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

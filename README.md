@@ -1,0 +1,1 @@
+Silly hack to use AI to watch display on my walking pad.
